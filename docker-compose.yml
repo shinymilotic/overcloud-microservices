@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: 'postgres:latest'
+#    networks:
+#      - overcloud_network
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=123123
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=auth
+    volumes:
+      - ./db-data/:/var/lib/postgresql/data/
+
+volumes:
+  redis_volume_data:
+  elasticsearch-data-volume:
+    driver: local
+
+#networks:
+#  overcloud_network:
+#    driver: bridge
+
